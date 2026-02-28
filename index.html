@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Felices 8 Meses ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Georgia', serif;
+    background: radial-gradient(circle at top, #ff4b5c, #7a0000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+/* Corazones flotando */
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Tarjeta central */
+.card {
+    background: rgba(0,0,0,0.7);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 0 50px rgba(255,255,255,0.3);
+    z-index: 2;
+}
+
+/* Sobre */
+.envelope {
+    width: 300px;
+    height: 200px;
+    background: #f5e6d3;
+    margin: auto;
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #e8d5bd;
+    clip-path: polygon(0 0, 50% 60%, 100% 0);
+    transform-origin: top;
+    transition: transform 1s;
+}
+
+.letter {
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    background: white;
+    color: #5a2a2a;
+    top: 10%;
+    left: 5%;
+    padding: 15px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 1s;
+    font-size: 14px;
+}
+
+.open .flap {
+    transform: rotateX(180deg);
+}
+
+.open .letter {
+    transform: translateY(0);
+}
+
+/* Fotos alrededor */
+.photo {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.5);
+    transition: transform 0.4s;
+}
+
+.photo:hover {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Posiciones */
+.p1 { top: 10%; left: 5%; }
+.p2 { top: 15%; right: 5%; }
+.p3 { bottom: 15%; left: 8%; }
+.p4 { bottom: 10%; right: 8%; }
+
+/* TE AMO */
+.teamo {
+    margin-top: 30px;
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: 0 0 20px white, 0 0 40px red;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px white, 0 0 20px red; }
+    to { text-shadow: 0 0 25px white, 0 0 60px red; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Fotos -->
+<img src="/Imagenes/Img1.jpeg" class="photo p1">
+<img src="/Imagenes/Img2.jpeg" class="photo p2">
+<img src="/Imagenes/Img3.jpeg" class="photo p3">
+<img src="/Imagenes/img4.jpeg" class="photo p4">
+
+<div class="card">
+    <h1>Felices 8 meses mi amor ❤️</h1>
+    <p>Haz clic aquí princesa 💌</p>
+
+    <div class="envelope" id="envelope" onclick="abrirCarta()">
+        <div class="flap"></div>
+        <div class="letter">
+            Hoy un mes mas de nuestro amor<br>
+            Y que Dios permita seguir caminando
+            junto a tu lado mi princesa
+            <br>
+            <br>
+            “El amor es paciente, es bondadoso.
+            el amor no es envidioso ni jactancioso ni orgulloso...
+            1 Corintios 13:4"
+            <br>
+            Te amo ❤️
+        </div>
+    </div>
+</div>
+
+<div class="teamo">TE AMO MI MONITA❤️</div>
+
+<script>
+let abierta = false;
+
+function abrirCarta() {
+    if (!abierta) {
+        document.getElementById("envelope").classList.add("open");
+        abierta = true;
+    }
+}
+
+// Corazones flotando
+for (let i = 0; i < 40; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
